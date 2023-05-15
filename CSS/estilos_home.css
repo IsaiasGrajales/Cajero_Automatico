@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #580EEB;
+    background-image: url("../Assets/imagen_fondo.png");
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Contiene a la seccion estado de cuenta y el div operaciones*/
+.contenedor{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/*------------------- SECCION ESTADO DE CUENTA ---------------------------------*/
+.estado-cuenta{
+    width: 50%;
+    margin: 0;
+}
+
+.cont-primario{
+    background-color: #5271FF;
+    background-color: rgba(253, 254, 254, 0.1);
+}
+
+.cont-primario{
+    width: 90%;
+    height: 94%;
+    margin: auto;
+    margin-right: 0;
+    margin-top: 5%;
+    border-radius: 10px;
+    border: 2px solid rgba(23, 32, 42, 0.05);
+}
+
+.cont-primario p{
+    text-align: center;
+    color: white;
+}
+
+.img-logotipo{
+    padding: 0;
+    margin: 0;
+}
+
+.logotipo{
+    width: 40%;
+}
+
+.saludo{
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.img-tarjeta{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.tarjeta{
+    width: 50%;
+    margin: 0;
+}
+
+.texto1{
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.texto2{
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.saldo{
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.cerrar-sesion{
+    margin: auto;
+    width: 100px;
+    height: 20px;
+    font-size: 12px;
+    margin-top: 0;
+}
+
+/*-------------------- CONTENEDOR OPERACION -----------------------------------*/
+.operacion{
+    width: 50%;
+    margin: 0;
+}
+
+.cont-secundario{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 95%;
+    margin: auto;
+    margin-left: 0;
+    margin-top: 5%;
+}
+
+p{
+    text-align: center;
+    color: white;
+}
+
+.mensajeRetiro{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 8%;
+    font-size: 14px;
+}
+
+.mensajeDeposito{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 8%;
+    font-size: 14px;
+}
+
+input{
+    display: block;
+    position: relative;
+    margin: auto;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #555555;
+}
+
+input:hover{
+    border: 1.5px solid white;
+}
+
+button{
+    display: block;
+    position: relative;
+    margin: auto;
+    font-size: 22px;
+    width: 160px;
+    height: 45px;
+    border-radius: 7px;
+    background-color: #008CBA;
+    color: white;
+    font-style: bold;
+    border: 1.5px solid #555555;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #555555;
+    border: 1.5px solid white;
+    margin-bottom: 5px;
+}
+
+/*--------------------- SECCION RETIRO ---------------------------------------*/
+.retiro{
+    background-color: #5271FF;
+    background-color: rgba(253, 254, 254, 0.1);
+}
+
+.retiro{
+    height: 50%;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(23, 32, 42, 0.05);
+}
+
+/*--------------------- SECCION DEPOSITO -------------------------------------*/
+.deposito{
+    background-color: #5271FF;
+    background-color: rgba(253, 254, 254, 0.1);
+}
+
+.deposito{
+    height: 50%;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(23, 32, 42, 0.05);
+}

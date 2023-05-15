@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #580EEB;
+    background-image: url("../Assets/imagen_fondo.png");
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*-------------logotipo banco y user--------------*/
+img{
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+/*-------------------logotipo banco---------------------*/
+.logotipo{
+    width: 20%;
+    margin-top: 30px;
+}
+
+/*-------------------logotipo user---------------------*/
+.user{
+    width: 13%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* -------------Inputs------------- */
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.cont-label{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
+    margin: auto;
+    margin: 0;
+    padding: 0;
+}
+
+label{
+    color: white;
+    text-align: right;
+    margin-right: 30px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cont-inputs{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
+    margin: auto;
+    margin: 0;
+    padding: 0;
+}
+
+input{
+    text-align: left;
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border: 1px solid #555555;
+}
+
+input:hover{
+    border: 1.5px solid white;
+}
+
+.mensajes{
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: 20%;
+    padding: 0;
+}
+
+.mensaje{
+    height: 10%;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* -------------boton-------------- */
+
+.boton{
+    text-align: center;
+    margin-top: 10px;
+}
+
+button{
+    font-size: 22px;
+    width: 160px;
+    height: 45px;
+    border-radius: 7px;
+    background-color: #008CBA;
+    color: white;
+    font-style: bold;
+    border: 1.5px solid #555555;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555555;
+    border: 1.5px solid white;
+    margin-bottom: 5px;
+}
