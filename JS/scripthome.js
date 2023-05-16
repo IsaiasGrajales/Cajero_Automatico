@@ -215,6 +215,7 @@ function limpiarInputs(identificador){
     document.getElementById(identificador).value = "";
 }
 
+//FUNCION PARA AGREGAR EL NOMBRE DEL USUARIO EN LA INTERFAZ DE BIENVENIDA
 function insertarNombreUsuario(nombre){
     document.getElementById("nombre-usuario").innerText = nombre;
 }

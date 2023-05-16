@@ -37,10 +37,27 @@ img{
     padding: 0;
 }
 
+.cont-icons{
+    display: flex;
+    flex-direction: column;
+    width: 2%;
+    position: relative;
+    margin: auto;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.usu, .pass{
+    text-align: right;
+    color: white;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
 .cont-label{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 10%;
     position: relative;
     margin: auto;
     margin: 0;
@@ -59,7 +76,7 @@ label{
 .cont-inputs{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 55%;
     position: relative;
     margin: auto;
     margin: 0;
@@ -92,7 +109,8 @@ input:hover{
     color: white;
     text-align: center;
     margin: 0;
-    font-size: 14px;
+    font-size: 18px;
+    text-shadow: 0.1em 0.1em #333;
 }
 
 /* -------------boton-------------- */

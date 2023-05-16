@@ -14,11 +14,13 @@ const formatEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 //variable que almacena el formato de la contraseña
 const formatPassword = /^\w+$/;
 
+const formatPassword2 = /[A-Za-z0-9&@_/+%]+/;
+
 //las cuentas por default de acuerdo a la actividad
 var cuentas = [
-    {correo: "Mali28@yahoo.com", contrasenia:"mial1" , saldo: 200, nombre: "Melissa"},
-    {correo: "Gera5@outlook.com", contrasenia:"agre2", saldo: 290, nombre: "Gerardo"},
-    {correo: "Maui34@gmail.com", contrasenia:"umia3", saldo: 67, nombre: "Mauricio"}
+    {correo: "Mali28@yahoo.com", contrasenia:"mIa715g3" , saldo: 200, nombre: "Meli"},
+    {correo: "Gera5@outlook.com", contrasenia:"a4RerM95", saldo: 290, nombre: "Gera"},
+    {correo: "Maui34@gmail.com", contrasenia:"ami5aJ", saldo: 67, nombre: "Maui"}
 ];
 
 //FUNCION DE BOTON ENVIAR DATOS
@@ -38,7 +40,7 @@ function ingresar(){
         //validamos si existen espacios vacios en los campos ingresados
         existenEspaciosVacios = espaciosVacios(usuario,contrasenia);
         if(existenEspaciosVacios==true){
-            mensajeError("Error, no deben existir espacios vacios en los datos ingresados","mensaje");
+            mensajeError("Usuario o Contraseña Incorrectos","mensaje");
             limpiarInputs("email","password");
         }
         else{
