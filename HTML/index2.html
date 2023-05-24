@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero automatico</title>
+    <link rel="stylesheet" href="../CSS/estilos2.css">
+    <script src="https://kit.fontawesome.com/80867dbfd2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="iniciar-sesion">
+        <div class="imagenes">
+            <img src="Assets/logotipo.png" class="logotipo" alt="logotipo banco">
+            <img src="Assets/imagen_usuario.png" class="user" alt="user">
+        </div>
+        <div class="contenedor">
+            <div class="cont-icons">
+                <i class="fa-solid fa-user usu"></i>
+                <i class="fa-solid fa-key pass"></i>
+            </div>
+            <div class="cont-label">
+                <label class="usuario">Usuario: </label>
+                <label class="password">Password: </label>
+            </div>
+            <div class="cont-inputs">
+                <input type="email" id="email" placeholder="email" title="digite su email" required>
+                <input type="password" id="password" placeholder="password" minlength="5" maxlength="8" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="La contraseña debe empezar con una letra y contener al menos un dígito" required>
+            </div>
+        </div>
+        <div class="mensajes">
+            <p class="mensaje" id="mensaje"></p>
+        </div>
+        <div class="boton">
+            <button type="submit" id="ingresar" onclick="ingresar()">Ingresar</button>
+        </div>
+    </section>
+
+    <script src="../JS/script2.js"></script>
+</body>
+</html>

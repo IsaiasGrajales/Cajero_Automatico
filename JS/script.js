@@ -1,12 +1,9 @@
-let usuario; //variable que almacena el email del usuario
-let contrasenia; //variable que almacena la contraseña
-let camposVacios; //variable que almacena un valor booleano para los inputs
-let existenEspaciosVacios; //variable que almacena un valor booleano si existen espacios en los datos
-let sinEspacios=false; //variable de tipo booleano que determina el resultado final de los campos
-//si no existen campos vacios
-let datoValido; //variable de tipo booleano para validar el formato del email y contraseña
+let user; //variable que almacena el email del usuario
+let password; //variable que almacena la contraseña
+let emptyFields; //variable que almacena un valor booleano para los inputs
+let validData; //variable de tipo booleano para validar el formato del email y contraseña
 
-let loginAcceso;//variable de tipo booleano que almacena el resultado de la funcion login()
+let loginAccess;//variable de tipo booleano que almacena el resultado de la funcion login()
 
 //variable que almacena el formato del email
 const formatEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
@@ -17,120 +14,70 @@ const formatPassword = /^\w+$/;
 const formatPassword2 = /[A-Za-z0-9&@_/+%]+/;
 
 //las cuentas por default de acuerdo a la actividad
-var cuentas = [
-    {correo: "Mali28@yahoo.com", contrasenia:"mIa715g3" , saldo: 200, nombre: "Meli"},
-    {correo: "Gera5@outlook.com", contrasenia:"a4RerM95", saldo: 290, nombre: "Gera"},
-    {correo: "Maui34@gmail.com", contrasenia:"ami5aJ", saldo: 67, nombre: "Maui"}
+var accounts = [
+    {email: "Mali28@yahoo.com", password:"mIa715g3" , balance: 200, name: "Meli"},
+    {email: "Gera5@outlook.com", password:"a4RerM95", balance: 290, name: "Gera"},
+    {email: "Maui34@gmail.com", password:"ami5aJ", balance: 67, name: "Maui"}
 ];
 
 //FUNCION DE BOTON ENVIAR DATOS
-function ingresar(){
-    usuario = document.getElementById("email").value;
-    contrasenia = document.getElementById("password").value;
+function getInto(){
+    user = document.getElementById("email").value;
+    password = document.getElementById("password").value;
     
     //validamos si los campos estan vacios o no
-    camposVacios = validarCampos(usuario,contrasenia);
+    emptyFields = validateFields(user,password);
 
-    if(camposVacios==true){
-        mensajeError("Es necesario llenar todos los campos","mensaje");
+    if(emptyFields==true){
+        messageError("It is necessary to fill in all fields","message");
     }
     else{
-        //console.log("ambos campos tienen datos");
+        validData = validateData(user,password);
 
-        //validamos si existen espacios vacios en los campos ingresados
-        existenEspaciosVacios = espaciosVacios(usuario,contrasenia);
-        if(existenEspaciosVacios==true){
-            mensajeError("Usuario o Contraseña Incorrectos","mensaje");
-            limpiarInputs("email","password");
-        }
-        else{
-            //console.log("excelente, no existen espacios vacios en los campos ingresados");
-            sinEspacios = true;
-        }
-    }
-
-    if(sinEspacios==true){
-        datoValido = validarDatos(usuario,contrasenia);
-
-        if(datoValido){
+        if(validData){
             //console.log("formato usuario y contraseña correctos");
-            loginAcceso = login(usuario,contrasenia);
+            loginAccess = login(user,password);
 
-            if(loginAcceso==true){
-                //console.log("ACCESO CONCEDIDO");
+            if(loginAccess==true){
+                console.log("ACCESO CONCEDIDO");
                 window.location.replace('home.html');
             }
             else{
-                mensajeError("Usuario o Contraseña Incorrectos","mensaje");
-                limpiarInputs("email","password");
+                messageError("Incorrect Username or Password","message");
+                cleanInputs("email","password");
             }
         }
         else{
-            mensajeError("ERROR, formato usuario o contraseña incorrectos","mensaje");
-            limpiarInputs("email","password");
+            messageError("ERROR, incorrect username or password format","message");
+            cleanInputs("email","password");
         }
     }
-    
 }
 
 //FUNCION PARA VERIFICAR SI LOS CAMPOS ESTAN VACIOS O NO
-function validarCampos(usuario, contrasenia){
-    let resultado = false;
+function validateFields(user, password){
+    let result = false;
 
-    if((usuario == "") && (contrasenia=="")){
-        resultado = true;
+    if((user == "") && (password=="")){
+        result = true;
     }
-    else if((usuario!="") && (contrasenia=="")){
-        resultado = true;
+    else if((user!="") && (password=="")){
+        result = true;
     }
-    else if((usuario=="") && (contrasenia!="")){
-        resultado = true;
-    }
-
-    return resultado;
-}
-
-//FUNCION PARA VERIFICAR SI EXISTE ESPACIOS EN BLANCO EN LOS DATOS
-function espaciosVacios(usuario, contrasenia){
-    let espaciosUser = false;
-    let espaciosPass = false;
-    let cont = 0;
-
-    while (!espaciosUser && (cont < usuario.length)) {
-        if (usuario.charAt(cont) == " ")
-        espaciosUser = true;
-        cont++; 
+    else if((user=="") && (password!="")){
+        result = true;
     }
 
-    cont = 0;
-   
-    while (!espaciosPass && (cont < contrasenia.length)) {
-        if (contrasenia.charAt(cont) == " ")
-        espaciosPass = true;
-        cont++;
-    }
-
-    if((espaciosUser==true) && (espaciosPass==false)){
-        return true;
-    }
-    else if((espaciosUser==false) && (espaciosPass==true)){
-        return true;
-    }
-    else if((espaciosUser==true) && (espaciosPass==true)){
-        return true;
-    }
-    else if((espaciosUser==false) && (espaciosPass==false)){
-        return false;
-    }
+    return result;
 }
 
 //FUNCION PARA VALIDAR DATOS DE USUARIO Y CONTRASEÑA CORRECTOS
-function validarDatos(usuario, contrasenia){
+function validateData(user, password){
 
-    let emailValido = validarEmail(usuario);
-    let contraseniaValido = validarPassword(contrasenia);
+    let validEmail = validateEmail(user);
+    let validPassword = validatePassword(password);
 
-    if((emailValido == true) && (contraseniaValido == true)){
+    if((validEmail == true) && (validPassword == true)){
         return true;
     }
     else{
@@ -139,9 +86,8 @@ function validarDatos(usuario, contrasenia){
 }
 
 //FUNCION PARA VERIFICAR SI EL FORMATO DEL CORREO ES CORRECTO
-function validarEmail(usuario){
-
-    if(formatEmail.test(usuario)){
+function validateEmail(user){
+    if(formatEmail.test(user)){
         return true;
     }
     else{
@@ -150,8 +96,8 @@ function validarEmail(usuario){
 }
 
 //FUNCION PARA VERIFICAR SI EL FORMATO DE LA CONTRASEÑA ES CORRECTA
-function validarPassword(contrasenia){
-    if(formatPassword.test(contrasenia)){
+function validatePassword(password){
+    if(formatPassword.test(password)){
         return true;
     }
     else{
@@ -160,11 +106,11 @@ function validarPassword(contrasenia){
 }
 
 //FUNCION PARA ACCEDER AL SISTEMA
-function login(usuario,contrasenia){
-    let accesoUser = verificarUsuario(usuario);
-    let accesoPass = verificarPassword(contrasenia);
+function login(user,password){
+    let accessUser = verifyUser(user);
+    let accessPass = verifyPassword(password);
 
-    if((accesoUser==true) && (accesoPass==true)){
+    if((accessUser==true) && (accessPass==true)){
         return true;
     }
     else{
@@ -173,58 +119,58 @@ function login(usuario,contrasenia){
 }
 
 //FUNCION PARA VERIFICAR SI EL USUARIO INGRESADO COINCIDE CON LA TABLA DE VALORES POR DEFAULT
-function verificarUsuario(usuario){
-    let usuarios = [];
-    let usuarioEncontrado = false;
+function verifyUser(user){
+    let users = [];
+    let userFound = false;
 
-    for(let i=0; i<cuentas.length; i++){
-        usuarios[i] = cuentas[i].correo;
+    for(let i=0; i<accounts.length; i++){
+        users[i] = accounts[i].email;
     }
 
-    for(let j=0; j<usuarios.length; j++){
-        if(usuarios[j] == usuario){
-            localStorage.setItem("user",usuarios[j]);
-            usuarioEncontrado = true;
+    for(let j=0; j<users.length; j++){
+        if(users[j] == user){
+            localStorage.setItem("user",users[j]);
+            userFound = true;
             break;
         }
     }
 
-    return usuarioEncontrado;
+    return userFound;
 }
 
 //FUNCION PARA VERIFICAR SI LA CONTRASEÑA INGRESADO COINCIDE CON LA TABLA DE VALORES POR DEFAULT
-function verificarPassword(contrasenia){
+function verifyPassword(password){
     let passs = [];
-    let saldos = [];
-    let nombres = [];
-    let passwordEncontrado = false;
+    let balances = [];
+    let names = [];
+    let passwordFound = false;
 
-    for(let i=0; i<cuentas.length; i++){
-        passs[i] = cuentas[i].contrasenia;
-        saldos[i] = cuentas[i].saldo;
-        nombres[i] = cuentas[i].nombre;
+    for(let i=0; i<accounts.length; i++){
+        passs[i] = accounts[i].password;
+        balances[i] = accounts[i].balance;
+        names[i] = accounts[i].name;
     }
 
     for(let j=0; j<passs.length; j++){
-        if(passs[j] == contrasenia){
+        if(passs[j] == password){
             localStorage.setItem("pass",passs[j]);
-            localStorage.setItem("saldo",saldos[j]);
-            localStorage.setItem("nombre",nombres[j]);
-            passwordEncontrado = true;
+            localStorage.setItem("balance",balances[j]);
+            localStorage.setItem("name",names[j]);
+            passwordFound = true;
             break;
         }
     }
 
-    return passwordEncontrado;
+    return passwordFound;
 }
 
 //FUNCION PARA LOS MENSAJES DE ERROR
-function mensajeError(mensaje,identificador){
-    console.log(mensaje);
-    document.getElementById(identificador).innerText = mensaje;
+function messageError(message,identifier){
+    console.log(message);
+    document.getElementById(identifier).innerText = message;
 }
 
-function limpiarInputs(identificador1,identificador2){
-    document.getElementById(identificador1).value = "";
-    document.getElementById(identificador2).value = "";
+function cleanInputs(identifier1,identifier2){
+    document.getElementById(identifier1).value = "";
+    document.getElementById(identifier2).value = "";
 }

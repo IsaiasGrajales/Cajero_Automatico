@@ -8,24 +8,24 @@ body {
 }
 
 /*Contiene a la seccion estado de cuenta y el div operaciones*/
-.container{
+.contenedor{
     display: flex;
     margin: 0;
     padding: 0;
 }
 
 /*------------------- SECCION ESTADO DE CUENTA ---------------------------------*/
-.account-status{
+.estado-cuenta{
     width: 50%;
     margin: 0;
 }
 
-.cont-primary{
+.cont-primario{
     background-color: #5271FF;
     background-color: rgba(253, 254, 254, 0.1);
 }
 
-.cont-primary{
+.cont-primario{
     width: 90%;
     height: 94%;
     margin: auto;
@@ -35,51 +35,51 @@ body {
     border: 2px solid rgba(23, 32, 42, 0.05);
 }
 
-.cont-primary p{
+.cont-primario p{
     text-align: center;
     color: white;
 }
 
-.img-logo{
+.img-logotipo{
     padding: 0;
     margin: 0;
 }
 
-.logo{
+.logotipo{
     width: 40%;
 }
 
-.greeting{
+.saludo{
     font-size: 22px;
     margin-bottom: 15px;
 }
 
-.img-card{
+.img-tarjeta{
     text-align: center;
     margin-bottom: 0;
 }
 
-.card{
+.tarjeta{
     width: 50%;
     margin: 0;
 }
 
-.text1{
+.texto1{
     font-size: 18px;
     margin-top: 0;
 }
 
-.text2{
+.texto2{
     font-size: 20px;
     margin-top: 40px;
 }
 
-.balance{
+.saldo{
     font-size: 32px;
     margin-top: 10px;
 }
 
-.sign-off{
+.cerrar-sesion{
     margin: auto;
     width: 100px;
     height: 20px;
@@ -88,12 +88,12 @@ body {
 }
 
 /*-------------------- CONTENEDOR OPERACION -----------------------------------*/
-.operation{
+.operacion{
     width: 50%;
     margin: 0;
 }
 
-.cont-secondary{
+.cont-secundario{
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -108,7 +108,7 @@ p{
     color: white;
 }
 
-.messageWithdrawal{
+.mensajeRetiro{
     margin-top: 8px;
     margin-bottom: 8px;
     height: 8%;
@@ -160,12 +160,12 @@ button:hover{
 }
 
 /*--------------------- SECCION RETIRO ---------------------------------------*/
-.retreat{
+.retiro{
     background-color: #5271FF;
     background-color: rgba(253, 254, 254, 0.1);
 }
 
-.retreat{
+.retiro{
     height: 50%;
     padding-top: 20px;
     border-radius: 10px;
@@ -173,12 +173,12 @@ button:hover{
 }
 
 /*--------------------- SECCION DEPOSITO -------------------------------------*/
-.deposit{
+.deposito{
     background-color: #5271FF;
     background-color: rgba(253, 254, 254, 0.1);
 }
 
-.deposit{
+.deposito{
     height: 50%;
     padding-top: 20px;
     border-radius: 10px;

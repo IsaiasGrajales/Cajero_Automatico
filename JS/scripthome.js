@@ -1,78 +1,78 @@
-var usuario = localStorage.getItem("user");
-var contrasenia = localStorage.getItem("pass");
-var saldo = localStorage.getItem("saldo");
-var nombre = localStorage.getItem("nombre");
+var user = localStorage.getItem("user");
+var password = localStorage.getItem("pass");
+var credit = localStorage.getItem("balance");
+var firstName = localStorage.getItem("name");
 
-let saldoActual = saldo;
+let currentBalance = credit;
 
-const ExpRegSoloNumeros=/^[0-9]+$/;
+const ExpRegOnlyNumbers=/^[0-9]+$/;
 
-console.log(usuario);
-console.log(contrasenia);
-console.log(saldo);
-console.log(nombre);
+console.log(user);
+console.log(password);
+console.log(credit);
+console.log(firstName);
 
-estadoCuenta(saldoActual);
-insertarNombreUsuario(nombre);
+accountStatus(currentBalance);
+insertUsername(firstName);
 
 //------------------------------- INICIA OPERACION RETIRO ------------------------------------
 
 //FUNCION PARA REALIZAR RETIROS A CUENTA
-function retirar(){
+function withdraw(){
 
-    let cantidad = document.getElementById("retiro").value;
+    let amount = document.getElementById("withdrawal").value;
     
-    let campoVacio = evaluarCampoVacio(cantidad);
+    let emptyField = evaluateEmptyField(amount);
 
-    if(campoVacio == true){
-        errorMesage("Es necesario llenar el campo","mensajeRetiro");
+    if(emptyField == true){
+        errorMessage("Es necesario llenar el campo","messageWithdrawal");
     }
     else{
         //mensajeOK("campo no vacio", "mensajeRetiro");
-        let esEntero = validarEsEntero(cantidad);
+        let isWhole = validateIsInteger(amount);
 
-        if(esEntero){
+        if(isWhole){
             //mensajeOK("son numeros enteros");
-            let mayorQueSaldo = evaluarMayorSaldoDisponible(cantidad);
-            if(mayorQueSaldo){
-                errorMesage("No tienes suficiente saldo disponible","mensajeRetiro");
-                limpiarInputs("retiro");
+            let greaterThanBalance = validateGreaterThanAvailableBalance(amount);
+            if(greaterThanBalance){
+                errorMessage("No tienes suficiente saldo disponible","messageWithdrawal");
+                clearInputs("withdrawal");
             }
             else{
                 //mensajeOK("la cantidad no es mayor que el saldo disponible");
-                let saldoNoMenor = saldoNoMenorDiez(cantidad);
+                let minorBalance = validateBalanceLessThan10(amount);
 
-                if(saldoNoMenor){
-                    errorMesage("Retiro no procedente, el saldo no puede ser menor a $10.00 pesos","mensajeRetiro");
-                    limpiarInputs("retiro");
+                if(minorBalance){
+                    errorMessage("Retiro no procedente, el saldo no puede ser menor a $10.00 pesos","messageWithdrawal");
+                    clearInputs("withdrawal");
                 }
                 else{
                     //mensajeOK("una vez retirado el saldo no sera menor de $10.00 pesos");
-                    autorizacionRetiro(cantidad);
+                    withdrawalAuthorization(amount);
                 }
             }
         }
         else{
-            errorMesage("El dato ingresado no es un numero entero","mensajeRetiro");
-            limpiarInputs("retiro");
+            errorMessage("El dato ingresado no es un numero entero","messageWithdrawal");
+            clearInputs("withdrawal");
         }
     }
 }
 
 //FUNCION QUE EVALUA SI LA CANTIDAD A RETIRAR ES MAYOR AL SALDO DISPONIBLE
-function evaluarMayorSaldoDisponible(cantidad){
-    let numero = parseInt(cantidad);
-    let resultado = false;
+function validateGreaterThanAvailableBalance(amount){
+    let number = parseInt(amount);
+    let result = false;
 
-    if((numero>saldoActual)){
-        resultado = true;
+    if((number>currentBalance)){
+        result = true;
     }
-    return resultado;
+    return result;
 }
 
-function saldoNoMenorDiez(cantidad){
-    let numero = parseInt(cantidad);
-    if((saldoActual-numero)<10){
+function validateBalanceLessThan10(amount){
+    let number = parseInt(amount);
+    if((currentBalance-number)<10){
         return true;
     }
     else{
@@ -81,57 +81,57 @@ function saldoNoMenorDiez(cantidad){
 }
 
 //FUNCION QUE AUTORIZA EL RETIRO SI LA CANTIDAD NO ES MAYOR QUE EL SALDO
-function autorizacionRetiro(cantidad){
-    saldoActual -= cantidad;
-    actualizarSaldo(saldoActual);
-    let mensaje = "saldo retirado: $ "+cantidad+".00 mx";
-    limpiarInputs("retiro");
-    mensajeOK(mensaje, "mensajeRetiro");
+function withdrawalAuthorization(amount){
+    currentBalance -= amount;
+    updateBalance(currentBalance);
+    let message = "saldo retirado: $ "+amount+".00 mx";
+    clearInputs("withdrawal");
+    messageOK(message, "messageWithdrawal");
 }
 
 
 //------------------------- INICIA SECCION OPERACION DEPOSITO -----------------------------
 
 //FUNCION PARA REALIZAR DEPOSITOS A CUENTA
-function depositar(){
-    let cantidad = document.getElementById("deposito").value;
+function toDeposit(){
+    let amount = document.getElementById("deposit").value;
 
-    let campoVacio = evaluarCampoVacio(cantidad);
+    let emptyField = evaluateEmptyField(amount);
 
-    if(campoVacio == true){
-        errorMesage("Es necesario llenar el campo","mensajeDeposito");
+    if(emptyField == true){
+        errorMessage("Es necesario llenar los campos","deposit-message");
     }
     else{
         //mensajeOK("campo no vacio");
-        let esEntero = validarEsEntero(cantidad);
+        let isWhole = validateIsInteger(amount);
 
-        if(esEntero){
+        if(isWhole){
             //mensajeOK("la cantidad es entero");
-            let seraMayor = evaluarDeposito(cantidad);
+            let isOlder = validateDeposit(amount);
 
-            if(seraMayor){
+            if(isOlder){
                 //mensajeOK("EXCELENTE, tu saldo no es mayor que 990 pesos");
-                autorizacionDeposito(cantidad);
+                authorizedDeposit(amount);
             }
             else{
-                errorMesage("No procedente, tu saldo no puede ser mayor a 990 pesos","mensajeDeposito");
-                limpiarInputs("deposito");
+                errorMessage("No procedente, tu saldo no puede ser mayor a 990 pesos","deposit-message");
+                clearInputs("deposit");
             }
 
         }
         else{
-            errorMesage("El dato ingresado no es un numero entero","mensajeDeposito");
-            limpiarInputs("deposito");
+            errorMessage("El dato ingresado no es un numero entero","deposit-message");
+            clearInputs("deposit");
         }
     }
 }
 
 //FUNCION PARA EVALUAR SI LA CANTIDAD + SALDO ACTUAL NO ES MAYOR QUE 990 PESOS
-function evaluarDeposito(cantidad){
+function validateDeposit(amount){
 
-    let resultadoSuma = suma(saldoActual,cantidad);
+    let resultSum = addition(currentBalance,amount);
 
-    if(resultadoSuma < 990){
+    if(resultSum < 990){
         return true;
     }
     else{
@@ -140,25 +140,25 @@ function evaluarDeposito(cantidad){
 }
 
 //FUNCION PARA LA AUTORIZACION DE DEPOSITO
-function autorizacionDeposito(cantidad){
-    saldoActual+=parseInt(cantidad);
-    actualizarSaldo(saldoActual);
-    let mensaje = "cantidad depositado: $ "+cantidad+".00 mx";
-    limpiarInputs("deposito");
-    mensajeOK(mensaje,"mensajeDeposito");
+function authorizedDeposit(amount){
+    currentBalance+=parseInt(amount);
+    updateBalance(currentBalance);
+    let message = "cantidad depositado: $ "+amount+".00 mx";
+    clearInputs("deposit");
+    messageOK(message,"deposit-message");
 }
 
 //--------------------------- INICIA FUNCIONES ADICIONALES POR OPERACION ---------------------
 
 //FUNCION PARA ACTUALIZAR EL SALDO
-function actualizarSaldo(saldoActual){
-    document.getElementById("disponible").innerText = saldoActual;
+function updateBalance(currentBalance){
+    document.getElementById("balance").innerText = currentBalance;
 }
 
 //FUNCION PARA VERIFICAR SI EL FORMATO INGRESADO SOLO SON NUMEROS ENTEROS
-function validarEsEntero(cantidad){
+function validateIsInteger(amount){
 
-    if(ExpRegSoloNumeros.test(cantidad)){
+    if(ExpRegOnlyNumbers.test(amount)){
         return true;
     }
     else{
@@ -167,64 +167,64 @@ function validarEsEntero(cantidad){
 }
 
 //FUNCION PARA MOSTRAR MENSAJES DE ERROR
-function errorMesage(mensaje, identificador){
-    console.log(mensaje);
-    document.getElementById(identificador).innerText = mensaje;
+function errorMessage(message, identifier){
+    console.log(message);
+    document.getElementById(identifier).innerText = message;
 }
 
 //FUNCION PARA MOSTRAR EL MENSAJE DE AUTORIZACION DE RETIRO O DEPOSITO
-function mensajeOK(mensaje,identificador){
-    console.log(mensaje);
-    document.getElementById(identificador).innerText = mensaje;
+function messageOK(message,identifier){
+    console.log(message);
+    document.getElementById(identifier).innerText = message;
 }
 
 //FUNCION QUE EVALUA SI EL USUARIO INGRESO ALGUN DATO EN EL INPUT
-function evaluarCampoVacio(cantidad){
-    let vacio = false;
+function evaluateEmptyField(amount){
+    let empty = false;
 
-    if(cantidad == ""){
-        vacio = true;
+    if(amount == ""){
+        empty = true;
     }
 
-    return vacio;
+    return empty;
 }
 
 //FUNCION OPERACION SUMA
-function suma(saldoActual,cantidad){
-    let numero1 = saldoActual;
-    let numero2 = parseInt(cantidad);
-    let resultado = numero1+numero2;
-    return resultado;
+function addition(currentBalance,amount){
+    let number1 = currentBalance;
+    let number2 = parseInt(amount);
+    let result = number1+number2;
+    return result;
 }
 
 //FUNCION OPERACION RESTA
-function resta(saldoActual,cantidad){
-    let numero1 = saldoActual;
-    let numero2 = parseInt(cantidad);
-    let resultado = numero1-numero2;
-    return resultado;
+function subtraction(currentBalance,amount){
+    let number1 = currentBalance;
+    let number2 = parseInt(amount);
+    let result = number1-number2;
+    return result;
 }
 
 //FUNCION QUE SE ACTIVA AL INICIO PARA PONER EL SALDO ACTUAL, SOLO SE EJECUTA UNA VEZ
-function estadoCuenta(saldoActual){
-    document.getElementById("disponible").innerText = saldoActual;
+function accountStatus(currentBalance){
+    document.getElementById("balance").innerText = currentBalance;
 }
 
 //FUNCION PARA LIMPIAR LOS INPUTS
-function limpiarInputs(identificador){
-    document.getElementById(identificador).value = "";
+function clearInputs(identifier){
+    document.getElementById(identifier).value = "";
 }
 
 //FUNCION PARA AGREGAR EL NOMBRE DEL USUARIO EN LA INTERFAZ DE BIENVENIDA
-function insertarNombreUsuario(nombre){
-    document.getElementById("nombre-usuario").innerText = nombre;
+function insertUsername(firstName){
+    document.getElementById("username").innerText = firstName;
 }
 
-function cerrarSesion(){
+function SignOff(){
     localStorage.getItem("user","");
     localStorage.getItem("pass","");
-    localStorage.getItem("saldo","");
-    localStorage.getItem("nombre","");
+    localStorage.getItem("balance","");
+    localStorage.getItem("name","");
     window.location.replace('index.html');
 }
 

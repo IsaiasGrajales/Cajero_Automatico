@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de inicio</title>
+    <link rel="stylesheet" href="../CSS/estilos_home2.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <section class="estado-cuenta">
+            <div class="cont-primario">
+                <div class="img-logotipo">
+                    <img src="Assets/logotipo.png" class="logotipo" alt="logotipo banco">
+                </div>
+                <p class="saludo">Hola <span class="nombre-usuario" id="nombre-usuario">Isaias</span>, Bienvenido/a</p>
+                <div class="img-tarjeta">
+                    <img src="Assets/tarjeta.png" class="tarjeta" alt="imagen tarjeta credito - debito">
+                </div>
+                <p class="texto1">cuenta en pesos</p>
+                <p class="texto2">Saldo disponible</p>
+                <p class="saldo">$ <span class="disponible" id="disponible">0</span>.00 mx</p>
+                <button class="cerrar-sesion" id="cerrar-sesion" onclick="cerrarSesion()">cerrar sesion</button>
+            </div>
+        </section>
+        <div class="operacion">
+            <div class="cont-secundario">
+                <section class="retiro">
+                    <p>Retiro</p>
+                    <p>Digite la cantidad a retirar</p>
+                    <input type="text" placeholder="cantidad a retirar" id="retiro">
+                    <p class="mensajeRetiro" id="mensajeRetiro"></p>
+                    <button class="btn-retirar" id="retirar" onclick="retirar()">Retirar</button>
+                </section>
+                <section class="deposito">
+                    <p>Deposito</p>
+                    <p>Digite la cantidad a depositar</p>
+                    <input type="text" placeholder="cantidad a depositar" id="deposito">
+                    <p class="mensajeDeposito" id="mensajeDeposito"></p>
+                    <button class="btn-depositar" id="depositar" onclick="depositar()">Depositar</button>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../JS/scripthome2.js"></script>
+</body>
+</html>
