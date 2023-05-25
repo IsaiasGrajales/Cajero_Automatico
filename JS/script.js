@@ -29,7 +29,7 @@ function getInto(){
     emptyFields = validateFields(user,password);
 
     if(emptyFields==true){
-        messageError("It is necessary to fill in all fields","message");
+        messageError("Es necesario llenar todos los campos","message");
     }
     else{
         validData = validateData(user,password);

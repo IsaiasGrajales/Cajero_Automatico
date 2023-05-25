@@ -5,6 +5,7 @@ body {
     background-image: url("../Assets/imagen_fondo.png");
     background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 /*Contiene a la seccion estado de cuenta y el div operaciones*/
@@ -50,8 +51,8 @@ body {
 }
 
 .greeting{
-    font-size: 22px;
-    margin-bottom: 15px;
+    font-size: 1.4em;
+    margin-bottom: 2.5%;
 }
 
 .img-card{
@@ -65,26 +66,27 @@ body {
 }
 
 .text1{
-    font-size: 18px;
+    font-size: 1.1em;
     margin-top: 0;
 }
 
 .text2{
-    font-size: 20px;
+    font-size: 1.3em;
     margin-top: 40px;
 }
 
 .balance{
-    font-size: 32px;
-    margin-top: 10px;
+    font-size: 2em;
+    margin-top: 0.5%;
 }
 
 .sign-off{
     margin: auto;
-    width: 100px;
-    height: 20px;
-    font-size: 12px;
+    width: 20%;
+    height: 5%;
+    font-size: 0.8em;
     margin-top: 0;
+    margin-bottom: 5%;
 }
 
 /*-------------------- CONTENEDOR OPERACION -----------------------------------*/
@@ -109,27 +111,29 @@ p{
 }
 
 .messageWithdrawal{
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 2%;
+    margin-bottom: 2%;
     height: 8%;
-    font-size: 16px;
-    text-shadow: 0.1em 0.1em #333;
+    font-size: 1em;
+    color: red;
+    text-shadow: 0.1em 0.1em white;
 }
 
-.mensajeDeposito{
-    margin-top: 8px;
-    margin-bottom: 8px;
+.deposit-message{
+    margin-top: 2%;
+    margin-bottom: 2%;
     height: 8%;
-    font-size: 16px;
-    text-shadow: 0.1em 0.1em #333;
+    font-size: 1em;
+    color: red;
+    text-shadow: 0.1em 0.1em white;
 }
 
 input{
     display: block;
     position: relative;
     margin: auto;
-    width: 250px;
-    height: 30px;
+    width: 50%;
+    height: 10%;
     border-radius: 5px;
     border: 1px solid #555555;
 }
@@ -142,9 +146,9 @@ button{
     display: block;
     position: relative;
     margin: auto;
-    font-size: 22px;
-    width: 160px;
-    height: 45px;
+    font-size: 1.4em;
+    width: 25%;
+    height: 15%;
     border-radius: 7px;
     background-color: #008CBA;
     color: white;
@@ -156,7 +160,6 @@ button{
 button:hover{
     background-color: #555555;
     border: 1.5px solid white;
-    margin-bottom: 5px;
 }
 
 /*--------------------- SECCION RETIRO ---------------------------------------*/
@@ -167,7 +170,7 @@ button:hover{
 
 .retreat{
     height: 50%;
-    padding-top: 20px;
+    padding-top: 3%;
     border-radius: 10px;
     border: 2px solid rgba(23, 32, 42, 0.05);
 }
@@ -180,7 +183,7 @@ button:hover{
 
 .deposit{
     height: 50%;
-    padding-top: 20px;
+    padding-top: 3%;
     border-radius: 10px;
     border: 2px solid rgba(23, 32, 42, 0.05);
 }
