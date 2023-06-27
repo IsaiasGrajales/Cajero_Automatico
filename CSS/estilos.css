@@ -147,3 +147,25 @@ button:hover {
     border: 1.5px solid white;
     margin-bottom: 5px;
 }
+
+/*Para Dispositivos Moviles*/
+@media (min-width:320px) and (max-width:480px){
+    body{
+        background-color: #154360;
+    }
+}
+
+/*Para Ipad's y Tablets*/
+@media (min-width:481px) and (max-width:768px){
+    
+}
+
+/*Para pantallas pequeñas y laptops*/
+@media (min-width:769px) and (max-width:1024px){
+    
+}
+
+/*Para computadoras de escritorio, pantallas grandes*/
+@media (min-width:1025px) and (max-width:1200px){
+    
+}
